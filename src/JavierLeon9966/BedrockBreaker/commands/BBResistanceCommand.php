@@ -4,7 +4,7 @@ namespace JavierLeon9966\BedrockBreaker\commands;
 use CortexPE\Commando\BaseCommand;
 use CortexPE\Commando\args\IntegerArgument;
 use pocketmine\command\CommandSender;
-class BBResistance extends BaseCommand {
+class BBResistanceCommand extends BaseCommand {
 	protected function prepare(): void {
 		$this->registerArgument(0, new IntegerArgument("blastResistance", false));
 	}
