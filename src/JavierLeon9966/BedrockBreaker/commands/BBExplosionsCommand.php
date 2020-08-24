@@ -14,6 +14,6 @@ class BBExplosionsCommand extends BaseCommand {
         $plugin->getConfig()->set('maxExplodeCount', $value);
         $plugin->getConfig()->save(true);
         $plugin->registerBlock();
-        $sender->sendMessage("§aSuccessfully changed the bedrock Max Explode Count value to §e$value§a.");
+        $sender->sendMessage("§aSuccessfully changed the bedrock Max Explode Count value to §e{$value}§a.");
 	}
 }
