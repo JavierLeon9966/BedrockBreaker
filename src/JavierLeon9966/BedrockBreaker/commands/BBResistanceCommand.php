@@ -12,7 +12,7 @@ class BBResistanceCommand extends BaseCommand {
 	    $value = $args[0];
 	    $plugin = $this->getPlugin();
         $plugin->getConfig()->set('blastResistance', $value);
-        $plugin->getConfig()->save(true);
+        $plugin->getConfig()->save();
         $plugin->registerBlock();
         $sender->sendMessage("§aSuccessfully changed the bedrock blast resistance value to §e{$value}§a.");
 	}
