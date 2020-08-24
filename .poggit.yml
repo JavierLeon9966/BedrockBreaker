@@ -1,0 +1,12 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/JavierLeon9966/BedrockBreaker
+build-by-default: true
+branches:
+- master
+projects:
+  BedrockBreaker:
+    path: ""
+    icon: "resources/Bedrock.png"
+    libs:
+      - src: ParoxityTeam/Commando/Commando
+        version: ^2.1.1
+...
