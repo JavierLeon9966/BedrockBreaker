@@ -14,6 +14,6 @@ class BBResistanceCommand extends BaseCommand {
         $plugin->getConfig()->set('blastResistance', $value);
         $plugin->getConfig()->save(true);
         $plugin->registerBlock();
-        $sender->sendMessage("§aSuccessfully changed the bedrock blast resistance value to §e$value§a.");
+        $sender->sendMessage("§aSuccessfully changed the bedrock blast resistance value to §e{$value}§a.");
 	}
 }
