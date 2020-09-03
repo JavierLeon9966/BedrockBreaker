@@ -1,9 +1,7 @@
 name: BedrockBreaker
 main: JavierLeon9966\BedrockBreaker\Main
 author: JavierLeon9966
-api:
-- 3.0.0
-- 4.0.0
+api: [3.0.0]
 version: 3.3.0
 description: Allow breaking bedrock with TNT
 permissions:
