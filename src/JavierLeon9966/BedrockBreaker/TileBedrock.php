@@ -1,20 +1,18 @@
 <?php
 declare(strict_types = 1);
 namespace JavierLeon9966\BedrockBreaker;
-use pocketmine\level\Level;
 use pocketmine\nbt\tag\CompoundTag;
-use pocketmine\Player;
 use pocketmine\tile\Tile;
 
 class TileBedrock extends Tile{
 	/** @var string */
 	public const
-		TAG_BREAKABLE = "Breakable",
-		TAG_EXPLODE_COUNT = "ExplodeCount";
+		TAG_BREAKABLE = “Breakable”,
+		TAG_EXPLODE_COUNT = “ExplodeCount”;
 	/** @var CompoundTag */
 	private $nbt;
 	public function getDefaultName(): string{
-	    return "Bedrock";
+		return “Bedrock”;
 	}
 	public function setBreakable(int $byte): self{
 		$this->getNBT()->setByte(self::TAG_BREAKABLE, $byte);
@@ -25,12 +23,12 @@ class TileBedrock extends Tile{
 		return $this;
 	}
 	public function isBreakable(): bool{
-	    if(!$this->getNBT()->hasTag(self::TAG_BREAKABLE)) $this->setBreakable((int)($this->y > 0));
-	    return (bool)$this->getNBT()->getByte(self::TAG_BREAKABLE);
+		if(!$this->getNBT()->hasTag(self::TAG_BREAKABLE)) $this->setBreakable((int)($this->y > 0));
+		return (bool)$this->getNBT()->getByte(self::TAG_BREAKABLE);
 	}
 	public function getExplodeCount(): int{
-	    if(!$this->getNBT()->hasTag(self::TAG_EXPLODE_COUNT)) $this->setExplodeCount();
-	    return $this->getNBT()->getInt(self::TAG_EXPLODE_COUNT);
+		if(!$this->getNBT()->hasTag(self::TAG_EXPLODE_COUNT)) $this->setExplodeCount();
+		return $this->getNBT()->getInt(self::TAG_EXPLODE_COUNT);
 	}
 	public function getNBT(): CompoundTag{
 		return $this->nbt;
