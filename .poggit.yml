@@ -2,11 +2,13 @@
 build-by-default: true
 branches:
 - master
+- PM4
 projects:
   BedrockBreaker:
     path: ""
     icon: "resources/Bedrock.png"
     libs:
       - src: ParoxityTeam/Commando/Commando
-        version: ^2.1.1
+        branch: PM-4.0
+        version: ^3.0.0
 ...
