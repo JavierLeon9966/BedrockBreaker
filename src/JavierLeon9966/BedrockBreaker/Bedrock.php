@@ -9,12 +9,12 @@ use pocketmine\world\particle\DestroyBlockParticle;
 class Bedrock extends PMBedrock{
 	protected static $maxExplodeCount;
 	public function __construct(int $explosions = 1, float $resistance = 0){
-		parent::__construct(new BID(Ids::BEDROCK, 0, null, TileBedrock::class), “Bedrock”, BlockBreakInfo::indestructible($resistance));
+		parent::__construct(new BID(Ids::BEDROCK, 0, null, TileBedrock::class), 'Bedrock', BlockBreakInfo::indestructible($resistance));
 		self::$maxExplodeCount = max($explosions, 1);
 	}
 	public function onActivate(Item $item, Player $player = null) : bool{
 		if($player instanceof Player){
-			$player->sendTip($this->getBreakable() ? ($this->getDuration() > 1 ? “§eExplode this block §c{$this->getDuration()} §etimes to destroy it!” : “§eExplode this block one more time to destroy it!”) : “§cThis block can’t be broken!”);
+			$player->sendTip($this->getBreakable() ? ($this->getDuration() > 1 ? "§eExplode this block §c{$this->getDuration()} §etimes to destroy it!" : '§eExplode this block one more time to destroy it!') : '§cThis block can’t be broken!');
 		}
 		return false;
 	}
@@ -34,7 +34,7 @@ class Bedrock extends PMBedrock{
 	public function getBreakable(): bool{
 		$tile = $this->getTile();
 		if($tile !== null){
-			return $this->getTile()->isBreakable();
+			return $tile->isBreakable();
 		}
 		return false;
 	}
@@ -55,7 +55,7 @@ class Bedrock extends PMBedrock{
 	public function setBreakable(bool $value): self{
 		$tile = $this->getTile();
 		if($tile !== null){
-			$this->getTile()->setBreakable((int)$value);
+			$tile->setBreakable((int)$value);
 		}
 		return $this;
 	}
