@@ -11,7 +11,7 @@ class BreakableCommand extends BaseCommand {
 		$this->registerArgument(0, new RawStringArgument('value', false));
 	}
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void{
-		$plugin = $this->getPlugin();
+		$plugin = $this->getOwningPlugin();
 		if(!$sender instanceof Player){
 			$plugin->getLogger()->notice('Please execute this command in-game.');
 			return;

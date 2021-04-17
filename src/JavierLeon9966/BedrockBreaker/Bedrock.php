@@ -7,7 +7,7 @@ use pocketmine\player\Player;
 use pocketmine\world\World;
 use pocketmine\world\particle\DestroyBlockParticle;
 class Bedrock extends PMBedrock{
-	protected static $maxExplodeCount;
+	protected static int $maxExplodeCount;
 	public function __construct(int $explosions = 1, float $resistance = 0){
 		parent::__construct(new BID(Ids::BEDROCK, 0, null, TileBedrock::class), 'Bedrock', BlockBreakInfo::indestructible($resistance));
 		self::$maxExplodeCount = max($explosions, 1);

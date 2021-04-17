@@ -5,12 +5,10 @@ use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\tile\Tile;
 
 class TileBedrock extends Tile{
-	/** @var string */
 	public const
-		TAG_BREAKABLE = “Breakable”,
-		TAG_EXPLODE_COUNT = “ExplodeCount”;
-	/** @var CompoundTag */
-	private $nbt;
+		TAG_BREAKABLE = 'Breakable',
+		TAG_EXPLODE_COUNT = 'ExplodeCount';
+	private CompoundTag $nbt;
 	public function getDefaultName(): string{
 		return “Bedrock”;
 	}
@@ -31,7 +29,7 @@ class TileBedrock extends Tile{
 		return $this->getNBT()->getInt(self::TAG_EXPLODE_COUNT);
 	}
 	public function getNBT(): CompoundTag{
-		return $this->nbt;
+		return $this->nbt ??= CompoundTag::create();
 	}
 	protected function readSaveData(CompoundTag $nbt): void{
 		$this->nbt = $nbt;

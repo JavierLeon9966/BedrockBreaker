@@ -11,7 +11,7 @@ use pocketmine\tile\TileFactory;
 use JavierLeon9966\BedrockBreaker\commands\{BBResistanceCommand, BBExplosionsCommand, BreakableCommand};
 use CortexPE\Commando\PacketHooker;
 class Main extends PluginBase implements Listener{
-	public static $players = [];
+	public static array $players = [];
 	public function onLoad(): void{
 		$this->saveDefaultConfig();
 		$this->registerBlock();

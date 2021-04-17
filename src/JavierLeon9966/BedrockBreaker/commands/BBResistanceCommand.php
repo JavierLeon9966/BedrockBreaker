@@ -10,7 +10,7 @@ class BBResistanceCommand extends BaseCommand {
 		$this->registerArgument(0, new IntegerArgument('blastResistance', false));
 	}
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void {
-		$plugin = $this->getPlugin();
+		$plugin = $this->getOwningPlugin();
 		$plugin->getConfig()->set('blastResistance', (int)$args[0]);
 		$plugin->registerBlock();
 		$sender->sendMessage("§aSuccessfully changed the bedrock blast resistance value to §e{$value}§a.");
