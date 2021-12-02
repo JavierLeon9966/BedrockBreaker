@@ -2,7 +2,7 @@ name: BedrockBreaker
 main: JavierLeon9966\BedrockBreaker\Main
 author: JavierLeon9966
 api: 4.0.0
-version: 3.3.1
+version: 3.4.0
 description: Allow breaking bedrock with TNT
 extensions:
   Core: '>=7.4'
