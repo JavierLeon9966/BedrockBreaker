@@ -10,7 +10,7 @@ class TileBedrock extends Tile{
 		TAG_EXPLODE_COUNT = 'ExplodeCount';
 	private CompoundTag $nbt;
 	public function getDefaultName(): string{
-		return “Bedrock”;
+		return "Bedrock";
 	}
 	public function setBreakable(int $byte): self{
 		$this->getNBT()->setByte(self::TAG_BREAKABLE, $byte);
