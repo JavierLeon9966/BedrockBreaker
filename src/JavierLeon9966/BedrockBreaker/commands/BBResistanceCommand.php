@@ -6,14 +6,13 @@ use CortexPE\Commando\args\IntegerArgument;
 use pocketmine\command\CommandSender;
 class BBResistanceCommand extends BaseCommand {
 	protected function prepare(): void {
-		$this->registerArgument(0, new IntegerArgument("blastResistance", false));
+		$this->setPermission('bedrockbreaker.command.bbresistance');
+		$this->registerArgument(0, new IntegerArgument('blastResistance', false));
 	}
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void {
-	    $value = $args[0];
-	    $plugin = $this->getPlugin();
-        $plugin->getConfig()->set('blastResistance', $value);
-        $plugin->getConfig()->save();
-        $plugin->registerBlock();
-        $sender->sendMessage("§aSuccessfully changed the bedrock blast resistance value to §e{$value}§a.");
+		$plugin = $this->getOwningPlugin();
+		$plugin->getConfig()->set('blastResistance', (int)$args[0]);
+		$plugin->registerBlock();
+		$sender->sendMessage("§aSuccessfully changed the bedrock blast resistance value to §e{$value}§a.");
 	}
 }

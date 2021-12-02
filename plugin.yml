@@ -1,20 +1,18 @@
 name: BedrockBreaker
 main: JavierLeon9966\BedrockBreaker\Main
 author: JavierLeon9966
-api: [3.0.0]
-version: 3.3.0
+api: 4.0.0
+version: 3.3.1
 description: Allow breaking bedrock with TNT
+extensions:
+  Core: '>=7.4'
 permissions:
-  bedrockbreaker.command:
-    description: Root permission of all commands
-    default: false
-    children:
-      bedrockbreaker.command.breakable:
-        description: Permission to use breakable command
-        default: op
-      bedrockbreaker.command.bbresistance:
-        description: Permission to use bbresistance command
-        default: op
-      bedrockbreaker.command.bbexplosions:
-        description: Permission to use bbexplosioms command
-        default: op
+  bedrockbreaker.command.breakable:
+    description: Permission to use breakable command
+    default: op
+  bedrockbreaker.command.bbresistance:
+    description: Permission to use bbresistance command
+    default: op
+  bedrockbreaker.command.bbexplosions:
+    description: Permission to use bbexplosioms command
+    default: op
