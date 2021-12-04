@@ -66,6 +66,11 @@ class Bedrock extends PMBedrock{
 		return false;
 	}
 
+	public function onPostPlace(): void{
+		$this->isBreakable = true;
+		$this->position->getWorld()->setBlock($this->position, $this);
+	}
+
 	/**
 	 * @deprecated
 	 * @see Bedrock::canBeExploded()
