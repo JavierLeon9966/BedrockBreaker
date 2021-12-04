@@ -1,39 +1,39 @@
 <?php
+
 declare(strict_types = 1);
+
 namespace JavierLeon9966\BedrockBreaker\commands;
+
+use CortexPE\Commando\args\BooleanArgument;
 use CortexPE\Commando\BaseCommand;
-use CortexPE\Commando\args\RawStringArgument;
+use CortexPE\Commando\constraint\InGameRequiredConstraint;
+
+use JavierLeon9966\BedrockBreaker\Main;
+
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
+use pocketmine\utils\TextFormat;
+
 class BreakableCommand extends BaseCommand {
 	protected function prepare(): void {
+		$this->addConstraint(new InGameRequiredConstraint($this));
 		$this->setPermission('bedrockbreaker.command.breakable');
-		$this->registerArgument(0, new RawStringArgument('value', false));
+		$this->registerArgument(0, new BooleanArgument('value', true));
 	}
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void{
 		$plugin = $this->getOwningPlugin();
-		if(!$sender instanceof Player){
-			$plugin->getLogger()->notice('Please execute this command in-game.');
+		assert($plugin instanceof Main);
+		$value = $args['value'] ?? null;
+		if($value !== null){
+			$plugin->setTogglingBedrock($sender, $value);
+			$sender->sendMessage(TextFormat::YELLOW . 'Click a bedrock block to make it ' . ($value ? '': 'un') . 'breakable.');
 			return;
 		}
-		switch($args[0]){
-			case 'cancel':
-				if(!isset($plugin::$players[$sender->getName()])){
-					$sender->sendMessage('§cYou’re not currently setting bedrock states.');
-					return;
-				}
-				unset($plugin::$players[$sender->getName()]);
-				$sender->sendMessage('§aSuccessfully left setting state.');
-				return;
-			case 'true':
-			case 'false':
-				$value = $args[0] == 'true';
-				$plugin::$players[$sender->getName()] = [$sender, $value];
-				$sender->sendMessage('§eClick a bedrock block to make it '.($value ? 'breakable.': 'unbreakable.'));
-				return;
-			default:
-				$sender->sendMessage("§cInvalid $value value, options: 'cancel', 'true' or 'false'");
-				return;
+		if(!$plugin->isTogglingBedrock($sender)){
+			$sender->sendMessage(TextFormat::RED . 'You’re not currently setting bedrock states.');
+			return;
 		}
+		$plugin->removeTogglingBedrock($sender);
+		$sender->sendMessage(TextFormat::GREEN . 'Successfully left setting state.');
 	}
 }

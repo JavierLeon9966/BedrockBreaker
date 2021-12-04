@@ -4,8 +4,6 @@ author: JavierLeon9966
 api: 4.0.0
 version: 3.4.0
 description: Allow breaking bedrock with TNT
-extensions:
-  Core: '>=7.4'
 permissions:
   bedrockbreaker.command.breakable:
     description: Permission to use breakable command
