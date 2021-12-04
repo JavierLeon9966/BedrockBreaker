@@ -76,6 +76,7 @@ class Bedrock extends PMBedrock{
 		}
 		$block = $this;
 		$world = $this->position->getWorld();
+		++$this->explodeCount;
 		if($this->canBeExploded()){
 			$block = VanillaBlocks::AIR();
 			$centerPos = $this->position->add(0.5, 0.5, 0.5);
