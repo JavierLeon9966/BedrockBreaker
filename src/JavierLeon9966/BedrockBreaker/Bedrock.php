@@ -71,7 +71,7 @@ class Bedrock extends PMBedrock{
 	 * @see Bedrock::canBeExploded()
 	 */
 	public function onExplode(): void{
-		if(!$this->isBreakable() or !$this->canBeExploded()){
+		if(!$this->isBreakable){
 			return;
 		}
 		$block = $this;
