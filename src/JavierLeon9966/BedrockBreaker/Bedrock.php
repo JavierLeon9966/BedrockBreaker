@@ -8,8 +8,8 @@ use pocketmine\block\{Bedrock as PMBedrock, BlockBreakInfo, BlockIdentifier as B
 use pocketmine\item\{Item, ItemFactory};
 use pocketmine\player\Player;
 use pocketmine\math\Vector3;
+use pocketmine\world\particle\BlockBreakParticle;
 use pocketmine\world\World;
-use pocketmine\world\particle\DestroyBlockParticle;
 use pocketmine\utils\TextFormat;
 
 class Bedrock extends PMBedrock{
@@ -82,7 +82,7 @@ class Bedrock extends PMBedrock{
 			foreach($this->getDrops(ItemFactory::air()) as $drop){
 				$world->dropItem($centerPos, $drop);
 			}
-			$world->addParticle(new DestroyBlockParticle($centerPos, $this->position));
+			$world->addParticle($centerPos, new BlockBreakParticle($this));
 			$world->getTileAt($this->position->x, $this->position->y, $this->position->z)?->onBlockDestroyed();
 		}
 		$world->setBlockAt($this->position->x, $this->position->y, $this->position->z, $block);
