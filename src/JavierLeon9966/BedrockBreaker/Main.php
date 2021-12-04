@@ -71,6 +71,10 @@ class Main extends PluginBase implements Listener{
 		return isset($this->playersTogglingBedrock[$player->getUniqueId()->getBytes()]);
 	}
 
+	public function getTogglingBedrock(Player $player): ?bool{
+		return $this->playersTogglingBedrock[$player->getUniqueId()->getBytes()] ?? null;
+	}
+
 	/**
 	 * @deprecated
 	 */
