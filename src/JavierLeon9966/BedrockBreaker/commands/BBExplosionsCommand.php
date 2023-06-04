@@ -6,9 +6,7 @@ namespace JavierLeon9966\BedrockBreaker\commands;
 
 use CortexPE\Commando\args\IntegerArgument;
 use CortexPE\Commando\BaseCommand;
-
-use JavierLeon9966\BedrockBreaker\Bedrock;
-
+use JavierLeon9966\BedrockBreaker\Main;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat;
 
@@ -17,8 +15,18 @@ class BBExplosionsCommand extends BaseCommand {
 		$this->setPermission('bedrockbreaker.command.bbexplosions');
 		$this->registerArgument(0, new IntegerArgument('explosions', false));
 	}
+
+	/** @param array<array-key, mixed> $args */
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void {
-		Bedrock::setMaxExplodeCount($args['explosions']);
-		$sender->sendMessage(TextFormat::GREEN . 'Successfully changed the bedrock Max Explode Count value to ' . TextFormat::YELLOW . $args['explosions'] . TextFormat::GREEN . '.');
+		$plugin = $this->getOwningPlugin();
+		assert($plugin instanceof Main);
+		/** @var int $explosions */
+		$explosions = $args['explosions'];
+		if($explosions < 1) {
+			$sender->sendMessage(TextFormat::RED . ' Max Explode Count must be a positive integer');
+			return;
+		}
+		$plugin->getBedrockConfig()->maxExplodeCount = $explosions;
+		$sender->sendMessage(TextFormat::GREEN . 'Successfully changed the bedrock Max Explode Count value to ' . TextFormat::YELLOW . $explosions . TextFormat::GREEN . '.');
 	}
 }
