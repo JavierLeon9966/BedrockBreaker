@@ -39,7 +39,7 @@ class BedrockData implements BlockData{
 
 	public function nbtSerialize(): CompoundTag{
 		return CompoundTag::create()
-			->setByte(self::TAG_BREAKABLE, $this->breakable)
+			->setByte(self::TAG_BREAKABLE, $this->breakable ? 1 : 0)
 			->setLong(self::TAG_EXPLODE_COUNT, $this->explodeCount);
 	}
 }
