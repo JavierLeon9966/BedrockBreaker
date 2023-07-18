@@ -8,7 +8,7 @@
   "require": {
     "pocketmine/pocketmine-mp": "^5.0.0",
     "muqsit/simple-packet-handler": "dev-pm5",
-    "acm-pocketmine-mp/commando": "3.2.0",
+    "paroxity/commando": "master",
     "cosmoverse/blockdata": "0.0.1",
     "sylvrs/libmarshal": "^1.4.3"
   },
@@ -21,15 +21,17 @@
     {
       "type": "package",
       "package": {
-        "name": "acm-pocketmine-mp/commando",
-        "version": "3.2.0",
+        "name": "paroxity/commando",
+        "version": "master",
         "autoload": {
-          "classmap": ["src/"]
+          "classmap": [
+            "src/"
+          ]
         },
         "source": {
-          "url": "https://github.com/acm-pocketmine-mp/commando",
+          "url": "https://github.com/paroxity/commando",
           "type": "git",
-          "reference": "PM5"
+          "reference": "master"
         }
       }
     },
