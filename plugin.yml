@@ -3,7 +3,7 @@ main: JavierLeon9966\BedrockBreaker\Main
 author: JavierLeon9966
 api: 5.0.0
 mcpe-protocols: [594, 618]
-version: 4.1.0
+version: 4.2.0
 description: Allow breaking bedrock with TNT
 permissions:
   bedrockbreaker.command.breakable:
