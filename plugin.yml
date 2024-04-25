@@ -2,7 +2,7 @@ name: BedrockBreaker
 main: JavierLeon9966\BedrockBreaker\Main
 author: JavierLeon9966
 api: 5.0.0
-mcpe-protocols: [594, 618, 630, 649, 662]
+mcpe-protocols: [594, 618, 630, 649, 662, 671]
 version: 4.6.0
 description: Allow breaking bedrock with TNT
 permissions:
